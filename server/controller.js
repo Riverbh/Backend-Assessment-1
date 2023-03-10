@@ -11,12 +11,23 @@ module.exports = {
     },
 
     getFortune: (req, res) => {
-        const fortune = ["Someone is looking up to you. Don't let that person down.", "run.", "No snowflake in an avalanche ever feels responsible.", "About time I got out of that array.", "I can help you, for I am just a button"]
+        const fortune = ["Someone is looking up to you. Don't let that person down.", "run.", "No snowflake in an avalanche ever feels responsible.", "About time I got out of that array.", "I can't help you, for I am just a button"]
 
         let randomIndex = Math.floor(Math.random() * fortune.length)
         let randomFortune = fortune[randomIndex]
 
         res.status(200).send(randomFortune)
+    },
+
+    postInspiration: (req, res) => {
+        let { inspiration } = req.body
+        let newInspiration = {
+            id: globalId,
+            inspiration
+        }
+        inspiration.push(newInspiration)
+        res.status(200).send(houses)
+        globalId++
     }
 
 }

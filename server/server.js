@@ -7,12 +7,12 @@ app.use(cors());
 
 app.use(express.json());
 
-const { getCompliment } = require('./controller')
+const { getCompliment, getFortune, postInspiration } = require('./controller')
+
 
 app.get("/api/compliment", getCompliment);
-
-const { getFortune } = require('./controller')
-
 app.get("/api/fortune", getFortune)
+app.post("/api/inspiration", postInspiration)
+
 
 app.listen(4000, () => console.log("Server running on 4000"));
