@@ -1,3 +1,5 @@
+let dataBase = []
+
 module.exports = {
 
     getCompliment: (req, res) => {
@@ -19,15 +21,25 @@ module.exports = {
         res.status(200).send(randomFortune)
     },
 
-    postInspiration: (req, res) => {
-        let { inspiration } = req.body
-        let newInspiration = {
-            id: globalId,
-            inspiration
-        }
-        inspiration.push(newInspiration)
-        res.status(200).send(houses)
-        globalId++
-    }
+    getMotivation: (req, res) => {
+        const motivation = ["You can do whatever you set your mind too", "You've got this", "Keep going until you reach your end goal."]
+   
+        let randomIndex = Math.floor(Math.random() * motivation.length)
+        let randomMotivation = motivation[randomIndex]
+
+        res.status(200).send(randomMotivation)
+    },
+
+    postInspiration: ((req, res) => {
+        dataBase.push(req.body)
+        res.status(200).send(dataBase)
+    }),
+
+    deleteName: ((req,res) => {
+        dataBase.pop(req.body)
+        res.status(200).send(dataBase)
+    })
+    
+
 
 }
